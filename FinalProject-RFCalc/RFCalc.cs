@@ -26,5 +26,10 @@ namespace FinalProject_RFCalc
         {
             
         }
+        private void get_dropdown_freq(object sender, EventArgs e)
+        {
+            string selected_freq = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+            Console.WriteLine(selected_freq);
+        }
     }
 }
