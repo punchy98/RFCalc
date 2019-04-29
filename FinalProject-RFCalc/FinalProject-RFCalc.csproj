@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Saving.cs" />
     <Compile Include="RFCalc.cs">
       <SubType>Form</SubType>
     </Compile>
