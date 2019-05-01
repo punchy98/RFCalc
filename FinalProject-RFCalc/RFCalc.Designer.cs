@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -66,6 +68,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.homeTab = new System.Windows.Forms.TabPage();
+            this.qconvGBOX = new System.Windows.Forms.GroupBox();
+            this.ghzOUT = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.m2gin = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -84,14 +90,16 @@
             this.freq2wbox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.saveConfig = new System.Windows.Forms.SaveFileDialog();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.mhzOut = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.ghzin = new System.Windows.Forms.TextBox();
             this.tabPage5.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.homeTab.SuspendLayout();
+            this.qconvGBOX.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -123,6 +131,24 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Antenna Size";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(176, 268);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(108, 13);
+            this.label19.TabIndex = 17;
+            this.label19.Text = "Radiation Resistance";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(176, 242);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(83, 13);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "Antenna Length";
             // 
             // label17
             // 
@@ -449,6 +475,7 @@
             // 
             // homeTab
             // 
+            this.homeTab.Controls.Add(this.qconvGBOX);
             this.homeTab.Controls.Add(this.groupBox2);
             this.homeTab.Controls.Add(this.groupBox1);
             this.homeTab.Controls.Add(this.label2);
@@ -462,6 +489,47 @@
             this.homeTab.TabIndex = 5;
             this.homeTab.Text = "Home";
             this.homeTab.UseVisualStyleBackColor = true;
+            // 
+            // qconvGBOX
+            // 
+            this.qconvGBOX.Controls.Add(this.mhzOut);
+            this.qconvGBOX.Controls.Add(this.label22);
+            this.qconvGBOX.Controls.Add(this.ghzin);
+            this.qconvGBOX.Controls.Add(this.ghzOUT);
+            this.qconvGBOX.Controls.Add(this.label20);
+            this.qconvGBOX.Controls.Add(this.m2gin);
+            this.qconvGBOX.Location = new System.Drawing.Point(298, 12);
+            this.qconvGBOX.Name = "qconvGBOX";
+            this.qconvGBOX.Size = new System.Drawing.Size(200, 206);
+            this.qconvGBOX.TabIndex = 11;
+            this.qconvGBOX.TabStop = false;
+            this.qconvGBOX.Text = "Quick Conversions";
+            // 
+            // ghzOUT
+            // 
+            this.ghzOUT.AutoSize = true;
+            this.ghzOUT.Location = new System.Drawing.Point(125, 51);
+            this.ghzOUT.Name = "ghzOUT";
+            this.ghzOUT.Size = new System.Drawing.Size(10, 13);
+            this.ghzOUT.TabIndex = 12;
+            this.ghzOUT.Text = " ";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 31);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(65, 13);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "MHz to GHz";
+            // 
+            // m2gin
+            // 
+            this.m2gin.Location = new System.Drawing.Point(6, 51);
+            this.m2gin.Name = "m2gin";
+            this.m2gin.Size = new System.Drawing.Size(100, 20);
+            this.m2gin.TabIndex = 0;
+            this.m2gin.TextChanged += new System.EventHandler(this.calculate_mhz2ghz);
             // 
             // groupBox2
             // 
@@ -634,23 +702,31 @@
             // 
             this.saveConfig.FileName = "RFCalc.conf";
             // 
-            // label18
+            // mhzOut
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(176, 242);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(83, 13);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "Antenna Length";
+            this.mhzOut.AutoSize = true;
+            this.mhzOut.Location = new System.Drawing.Point(125, 106);
+            this.mhzOut.Name = "mhzOut";
+            this.mhzOut.Size = new System.Drawing.Size(10, 13);
+            this.mhzOut.TabIndex = 15;
+            this.mhzOut.Text = " ";
             // 
-            // label19
+            // label22
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(176, 268);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(108, 13);
-            this.label19.TabIndex = 17;
-            this.label19.Text = "Radiation Resistance";
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 86);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(65, 13);
+            this.label22.TabIndex = 14;
+            this.label22.Text = "GHz to MHz";
+            // 
+            // ghzin
+            // 
+            this.ghzin.Location = new System.Drawing.Point(6, 106);
+            this.ghzin.Name = "ghzin";
+            this.ghzin.Size = new System.Drawing.Size(100, 20);
+            this.ghzin.TabIndex = 13;
+            this.ghzin.TextChanged += new System.EventHandler(this.calculateghztomhz);
             // 
             // RFCalc
             // 
@@ -671,6 +747,8 @@
             this.tabControl1.ResumeLayout(false);
             this.homeTab.ResumeLayout(false);
             this.homeTab.PerformLayout();
+            this.qconvGBOX.ResumeLayout(false);
+            this.qconvGBOX.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -741,6 +819,13 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox qconvGBOX;
+        private System.Windows.Forms.Label ghzOUT;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox m2gin;
+        private System.Windows.Forms.Label mhzOut;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox ghzin;
     }
 }
 

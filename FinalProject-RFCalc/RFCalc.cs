@@ -481,6 +481,54 @@ namespace FinalProject_RFCalc
             }
         }
 
+        public class DisplayQuickConversions
+        {
+            public void mhztoghz(TextBox mhzin, Label ghzout)
+            {
+                string mhz;
+                double mhzD;
+                string ghz;
 
+                mhz = mhzin.Text;
+                mhzD = Int32.Parse(mhz);
+
+                mhzD = mhzD / 1000;
+                ghz = mhzD.ToString();
+
+                ghzout.Text = ghz;
+
+
+            }
+            public void ghztomhz(TextBox ghzin, Label mhzout)
+            {
+                string mhz;
+                string ghz;
+                double ghzD;
+
+                ghz = ghzin.Text;
+                ghzD = Int32.Parse(ghz);
+
+                ghzD = ghzD * 1000;
+                mhz = ghzD.ToString();
+
+                mhzout.Text = mhz;
+            }
+
+        }
+
+        private void calculate_mhz2ghz(object sender, EventArgs e)
+        {
+            DisplayQuickConversions quickConv = new DisplayQuickConversions();
+            quickConv.mhztoghz(m2gin, ghzOUT);
+
+
+        }
+
+        private void calculateghztomhz(object sender, EventArgs e)
+        {
+            DisplayQuickConversions quickie = new DisplayQuickConversions();
+            quickie.ghztomhz(ghzin, mhzOut);
+
+        }
     }
 }
