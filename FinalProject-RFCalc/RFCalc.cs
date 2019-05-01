@@ -150,6 +150,7 @@ namespace FinalProject_RFCalc
 
 
             }
+
             if (freqMHZ == 1)
             {
                 freqq = freqq * 1000000000;
@@ -337,9 +338,20 @@ namespace FinalProject_RFCalc
         {
             WhipAntenna wa = new WhipAntenna();
             wa.Capacitance(lenin, freqin, diain, capacitance);
-            string capa  = capacitance.Text;
-            double c = Int32.Parse(capa);
-            // wa.Inductance(freqin, c, inductance);
+            //string capa  = capacitance.Text;
+            // double c = Int32.Parse(capa);
+            //wa.Inductance(freqin, capa, inductance);
+            inductance.Text = "WIP";
+            QuarterWav q = new QuarterWav();
+            q.Domath(freqin, quartwav);
+
+            LazyStudent me = new LazyStudent();
+            me.lazyMessage(antennalength);
+            me.lazyMessage(radresistance);
+
+
+
+
         }
 
 
@@ -351,7 +363,7 @@ namespace FinalProject_RFCalc
 
             public void Capacitance(TextBox lengthin, TextBox freqin, TextBox diameterin, TextBox capac)
             {
-       
+
 
                 string len;
                 len = lengthin.Text;
@@ -365,7 +377,7 @@ namespace FinalProject_RFCalc
                 string dia;
                 dia = diameterin.Text;
                 double diameter = Int32.Parse(dia);
-                
+
 
                 double top;
                 double left;
@@ -386,22 +398,35 @@ namespace FinalProject_RFCalc
 
             }
 
-            public void Inductance(TextBox freqin, double capac, TextBox induc)
+            public void Inductance(TextBox freqin, string capac, TextBox induc)
             {
 
                 string fre;
                 fre = freqin.Text;
                 double freq = Int32.Parse(fre);
-
-
-              //  string cap;
-              //  cap = capac.Text;
-              //  double capacitance = Int32.Parse(cap);
-              double capacitance;
-              capacitance = capac;
+                string capacIn;
+                capacIn = capac;
+                //  string cap;
+                //  cap = capac.Text;
+                int i = capacIn.IndexOf(".");
+                capacIn = capacIn.Remove(i);
+                double capacitance = Int32.Parse(capacIn);
+                //  double capacitance;
+                //   capacitance = capac;
 
                 string ind;
                 ind = induc.Text;
+                int o = ind.IndexOf(".");
+                if (o <= -1)
+                {
+                    o = 0;
+                }
+                else
+                {
+                    ind = ind.Remove(o);
+
+                }
+
                 double inductance = Int32.Parse(ind);
 
                 //math 
@@ -423,12 +448,39 @@ namespace FinalProject_RFCalc
 
 
 
+
+        }
+
+        public class QuarterWav
+        {
+
+            public void Domath(TextBox freqin, TextBox quarterout)
+            {
+
+
+                string fre;
+                fre = freqin.Text;
+                double freq = Int32.Parse(fre);
+                double math;
+
+                math = 300 / (freq / 4);
+
+                quarterout.Text = math.ToString();
+            }
+        
         }
 
 
+        public class LazyStudent
+        {
+            public void lazyMessage(TextBox lazy)
+            {
+                lazy.Text = "I could do these but the formulas are too long to type";
+                int lazinessLevel = 100;
+               
+            }
+        }
 
 
     }
-
-
- }
+}
