@@ -21,10 +21,6 @@ namespace FinalProject_RFCalc
             InitializeComponent();
         }
 
-        private void set_freq_unit(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -276,7 +272,6 @@ namespace FinalProject_RFCalc
 
             dbm = dbm2watts.Text;
             dbm_conv = Int32.Parse(dbm);
-        //    Convert.ToDouble(dbm_conv);
 
 
 
@@ -285,6 +280,153 @@ namespace FinalProject_RFCalc
             dbm2wattsout.Text = watts.ToString();
 
         }
+
+        public class Antenna
+        {
+            public Antenna()
+            {
+            }
+
+            public void LoS(TextBox inbox, TextBox outbox)
+            {
+                string antennaHeight;
+                antennaHeight = inbox.Text;
+                double aHeight = Int32.Parse(antennaHeight);
+
+                double lineofsight;
+                lineofsight = 3.57 * Math.Sqrt(aHeight);
+                outbox.Text = lineofsight.ToString();
+
+
+            }
+
+            public void RH(TextBox inbox, TextBox outbox)
+            {
+                string antennaHeight;
+                antennaHeight = inbox.Text;
+                double aHeight = Int32.Parse(antennaHeight);
+
+                double rh;
+                rh = 4.12 * Math.Sqrt(aHeight);
+                outbox.Text = rh.ToString();
+
+            }
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            calculateLoSRH();
+
+        }
+
+        private void calculateLoSRH()
+        {
+            Antenna ant = new Antenna();
+            ant.LoS(losrhbox, losout);
+            ant.RH(losrhbox, rhout);
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            calculateWhip();
+        }
+
+        private void calculateWhip()
+        {
+            WhipAntenna wa = new WhipAntenna();
+            wa.Capacitance(lenin, freqin, diain, capacitance);
+            string capa  = capacitance.Text;
+            double c = Int32.Parse(capa);
+            // wa.Inductance(freqin, c, inductance);
+        }
+
+
+
+        public class WhipAntenna
+        {
+
+
+
+            public void Capacitance(TextBox lengthin, TextBox freqin, TextBox diameterin, TextBox capac)
+            {
+       
+
+                string len;
+                len = lengthin.Text;
+                double length = Int32.Parse(len);
+
+
+                string fre;
+                fre = freqin.Text;
+                double freq = Int32.Parse(fre);
+
+                string dia;
+                dia = diameterin.Text;
+                double diameter = Int32.Parse(dia);
+                
+
+                double top;
+                double left;
+                double center;
+                double right;
+                double capa;
+                //math
+                top = (17 * (length / 12));
+                left = Math.Log10((24 * (length / 12)) / diameter) - 1;
+                center = (((1 - freq) * (length / 12)) / 234);
+                right = (((freq) * (length / 12)) / 234);
+
+                capa = top / (left * center * right);
+
+                capac.Text = capa.ToString();
+
+
+
+            }
+
+            public void Inductance(TextBox freqin, double capac, TextBox induc)
+            {
+
+                string fre;
+                fre = freqin.Text;
+                double freq = Int32.Parse(fre);
+
+
+              //  string cap;
+              //  cap = capac.Text;
+              //  double capacitance = Int32.Parse(cap);
+              double capacitance;
+              capacitance = capac;
+
+                string ind;
+                ind = induc.Text;
+                double inductance = Int32.Parse(ind);
+
+                //math 
+                double top;
+                double middle;
+                double bottom;
+                double induct;
+
+                top = 1;
+                middle = Math.Pow((2 * Math.PI * freq * Math.Pow(10, 6)), 2) * (capacitance * Math.Pow(1, -12));
+                bottom = Math.Pow(1, -12);
+
+                induct = top / (middle / bottom);
+
+                induc.Text = induct.ToString();
+
+
+            }
+
+
+
+        }
+
+
+
 
     }
 
