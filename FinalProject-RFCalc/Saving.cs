@@ -7,9 +7,10 @@ using System.IO;
 
 namespace FinalProject_RFCalc
 {
+    /*
     class Saving
     {
-        public string file_location = "C:\\Users\\User\\Desktop\\rfcalc.txt";
+        public string file_location;
         public string freq;
         public string units;
 
@@ -19,5 +20,5 @@ namespace FinalProject_RFCalc
             savefile.WriteLine(freq);
             savefile.WriteLine(units);
         }
-    }
+    }*/
 }
