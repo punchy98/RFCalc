@@ -24,7 +24,7 @@ namespace FinalProject_RFCalc
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string file_location = "C:\\Users\\Michael Maldonado\\Desktop\\rfcalc.txt";
+            string file_location = "C:\\Users\\User\\Desktop\\rfcalc.txt";
             string freq = "";
             string units = "";
 
